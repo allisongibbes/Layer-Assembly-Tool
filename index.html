@@ -14,7 +14,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-    background-color: #e0e0e0; /* Represents the digital lightbox */
+    background-color: #e0e0e0;
     background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), 
                       linear-gradient(-45deg, #ccc 25%, transparent 25%), 
                       linear-gradient(45deg, transparent 75%, #ccc 75%), 
@@ -35,12 +35,11 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    opacity: 0; /* Hidden by default */
+    opacity: 0;
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
   }
 
-  /* Show layer when active */
   .layer-img.active {
     opacity: 1;
   }
@@ -72,18 +71,16 @@
     background-color: #eee;
   }
 
-  /* Active states for different buttons */
   .btn-sketch.active { border-color: #757575; background-color: #f5f5f5; }
   .btn-ink.active { border-color: #000000; background-color: #e0e0e0; color: #000; }
   .btn-paint.active { border-color: #1976d2; background-color: #e3f2fd; color: #1565c0; }
   .btn-bg.active { border-color: #388e3c; background-color: #e8f5e9; color: #2e7d32; }
 
-  /* Checkbox styling within the button */
   .toggle-btn input[type="checkbox"] {
     width: 18px;
     height: 18px;
     cursor: pointer;
-    pointer-events: none; /* Let the button handle the click */
+    pointer-events: none;
   }
 </style>
 
@@ -93,18 +90,20 @@
   <p>Toggle the four distinct visual layers on and off to build a final frame on the digital lightbox.</p>
 
   <div class="canvas-container">
-    <!-- 4. Painted Background Plate (Lowest Layer) -->
-<img id="layer-bg" class="layer-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><rect width='800' height='450' fill='%232c3e50'/><circle cx='650' cy='100' r='60' fill='%23f1c40f'/><rect x='100' y='200' width='150' height='250' fill='%2334495e'/><rect x='300' y='100' width='200' height='350' fill='%232c3e50'/><rect x='550' y='250' width='150' height='200' fill='%2334495e'/></svg>" alt="Background">
+    <!-- 4. Painted Background Plate -->
+    <img id="layer-bg" class="layer-img" src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="800" height="450" fill="%232c3e50"/><circle cx="650" cy="100" r="60" fill="%23f1c40f"/><rect x="100" y="200" width="150" height="250" fill="%2334495e"/><rect x="300" y="100" width="200" height="350" fill="%232c3e50"/><rect x="550" y="250" width="150" height="200" fill="%2334495e"/></svg>' alt="Background">
     
-    <img id="layer-paint" class="layer-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><ellipse cx='400' cy='350' rx='60' ry='80' fill='%238d6e63'/><circle cx='340' cy='280' r='45' fill='%238d6e63'/><circle cx='460' cy='280' r='45' fill='%238d6e63'/><circle cx='340' cy='280' r='25' fill='%23f48fb1'/><circle cx='460' cy='280' r='25' fill='%23f48fb1'/><rect x='350' y='180' width='100' height='80' fill='%231976d2'/><rect x='310' y='260' width='180' height='20' fill='%231976d2'/></svg>" alt="Color Paint">
+    <!-- 3. Flat Color (Paint) -->
+    <img id="layer-paint" class="layer-img" src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><ellipse cx="400" cy="350" rx="60" ry="80" fill="%238d6e63"/><circle cx="340" cy="280" r="45" fill="%238d6e63"/><circle cx="460" cy="280" r="45" fill="%238d6e63"/><circle cx="340" cy="280" r="25" fill="%23f48fb1"/><circle cx="460" cy="280" r="25" fill="%23f48fb1"/><rect x="350" y="180" width="100" height="80" fill="%231976d2"/><rect x="310" y="260" width="180" height="20" fill="%231976d2"/></svg>' alt="Color Paint">
     
-    <img id="layer-ink" class="layer-img" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><ellipse cx='400' cy='350' rx='60' ry='80' fill='none' stroke='black' stroke-width='5'/><circle cx='340' cy='280' r='45' fill='none' stroke='black' stroke-width='5'/><circle cx='460' cy='280' r='45' fill='none' stroke='black' stroke-width='5'/><circle cx='340' cy='280' r='25' fill='none' stroke='black' stroke-width='3'/><circle cx='460' cy='280' r='25' fill='none' stroke='black' stroke-width='3'/><rect x='350' y='180' width='100' height='80' fill='none' stroke='black' stroke-width='5'/><rect x='310' y='260' width='180' height='20' fill='none' stroke='black' stroke-width='5'/><circle cx='380' cy='330' r='6' fill='black'/><circle cx='420' cy='330' r='6' fill='black'/><path d='M 390 360 Q 400 370 410 360' fill='none' stroke='black' stroke-width='4'/></svg>" alt="Ink Lines">
+    <!-- 2. Clean Ink -->
+    <img id="layer-ink" class="layer-img" src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><ellipse cx="400" cy="350" rx="60" ry="80" fill="none" stroke="black" stroke-width="5"/><circle cx="340" cy="280" r="45" fill="none" stroke="black" stroke-width="5"/><circle cx="460" cy="280" r="45" fill="none" stroke="black" stroke-width="5"/><circle cx="340" cy="280" r="25" fill="none" stroke="black" stroke-width="3"/><circle cx="460" cy="280" r="25" fill="none" stroke="black" stroke-width="3"/><rect x="350" y="180" width="100" height="80" fill="none" stroke="black" stroke-width="5"/><rect x="310" y="260" width="180" height="20" fill="none" stroke="black" stroke-width="5"/><circle cx="380" cy="330" r="6" fill="black"/><circle cx="420" cy="330" r="6" fill="black"/><path d="M 390 360 Q 400 370 410 360" fill="none" stroke="black" stroke-width="4"/></svg>' alt="Ink Lines">
     
-    <img id="layer-sketch" class="layer-img active" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='450'><ellipse cx='402' cy='348' rx='62' ry='78' fill='none' stroke='%23757575' stroke-width='2'/><ellipse cx='398' cy='352' rx='58' ry='82' fill='none' stroke='%239e9e9e' stroke-width='2'/><circle cx='338' cy='278' r='47' fill='none' stroke='%23757575' stroke-width='2'/><circle cx='342' cy='282' r='43' fill='none' stroke='%239e9e9e' stroke-width='2'/><circle cx='462' cy='278' r='47' fill='none' stroke='%23757575' stroke-width='2'/><circle cx='458' cy='282' r='43' fill='none' stroke='%239e9e9e' stroke-width='2'/><rect x='348' y='178' width='104' height='84' fill='none' stroke='%23757575' stroke-width='2'/><rect x='352' y='182' width='96' height='76' fill='none' stroke='%239e9e9e' stroke-width='2'/><rect x='308' y='258' width='184' height='24' fill='none' stroke='%23757575' stroke-width='2'/><circle cx='380' cy='330' r='6' fill='none' stroke='%23757575' stroke-width='2'/><circle cx='420' cy='330' r='6' fill='none' stroke='%23757575' stroke-width='2'/><path d='M 390 360 L 410 360 M 390 362 L 410 362' fill='none' stroke='%23757575' stroke-width='2'/></svg>" alt="Pencil Sketch">
+    <!-- 1. Rough Sketch -->
+    <img id="layer-sketch" class="layer-img active" src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><ellipse cx="402" cy="348" rx="62" ry="78" fill="none" stroke="%23757575" stroke-width="2"/><ellipse cx="398" cy="352" rx="58" ry="82" fill="none" stroke="%239e9e9e" stroke-width="2"/><circle cx="338" cy="278" r="47" fill="none" stroke="%23757575" stroke-width="2"/><circle cx="342" cy="282" r="43" fill="none" stroke="%239e9e9e" stroke-width="2"/><circle cx="462" cy="278" r="47" fill="none" stroke="%23757575" stroke-width="2"/><circle cx="458" cy="282" r="43" fill="none" stroke="%239e9e9e" stroke-width="2"/><rect x="348" y="178" width="104" height="84" fill="none" stroke="%23757575" stroke-width="2"/><rect x="352" y="182" width="96" height="76" fill="none" stroke="%239e9e9e" stroke-width="2"/><rect x="308" y="258" width="184" height="24" fill="none" stroke="%23757575" stroke-width="2"/><circle cx="380" cy="330" r="6" fill="none" stroke="%23757575" stroke-width="2"/><circle cx="420" cy="330" r="6" fill="none" stroke="%23757575" stroke-width="2"/><path d="M 390 360 L 410 360 M 390 362 L 410 362" fill="none" stroke="%23757575" stroke-width="2"/></svg>' alt="Pencil Sketch">
   </div>
 
   <div class="controls-grid">
-    <!-- The buttons toggle the 4 distinct layers mentioned in the source material -->
     <label class="toggle-btn btn-bg">
       <input type="checkbox" data-target="layer-bg">
       4. Background Plate
@@ -120,7 +119,6 @@
       2. Clean Ink
     </label>
     
-    <!-- Sketch is checked and active by default -->
     <label class="toggle-btn btn-sketch active">
       <input type="checkbox" data-target="layer-sketch" checked>
       1. Rough Sketch
@@ -132,7 +130,6 @@
   const toggleButtons = document.querySelectorAll('.toggle-btn');
 
   toggleButtons.forEach(button => {
-    // Prevent double-firing by listening to the label click, but preventing default if it's not the checkbox
     button.addEventListener('click', function(e) {
       if (e.target.tagName !== 'INPUT') {
         const checkbox = this.querySelector('input[type="checkbox"]');
@@ -141,7 +138,6 @@
       }
     });
 
-    // Also handle direct keyboard interactions with the checkbox
     const checkbox = button.querySelector('input[type="checkbox"]');
     checkbox.addEventListener('change', function() {
       updateLayer(button, this);
